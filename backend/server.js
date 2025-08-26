@@ -1,54 +1,65 @@
-const express = require('express');
-const nodemailer = require('nodemailer');
-const cors = require('cors');
+// ------------------------------
+// Portfolio Backend (server.js)
+// ------------------------------
+
+const express = require("express");
+const cors = require("cors");
+const nodemailer = require("nodemailer");
 
 const app = express();
-const PORT = 3001;
+app.use(cors());
+app.use(express.json());
 
-// Middleware
-app.use(cors()); // Allow cross-origin requests
-app.use(express.json()); // Parse JSON request bodies
-
-// Nodemailer configuration
-const transporter = nodemailer.createTransport({
-  service: 'gmail',
-  auth: {
-    user: 'vijaytamada333@gmail.com', 
-    pass: 'klui flem xblx hoxu', 
-  },
-});
-
-// Endpoint to handle contact form submissions
-app.post('/send-message', async (req, res) => {
+// ------------------------------
+// API: Contact Form Submission
+// ------------------------------
+app.post("/send-message", async (req, res) => {
   const { name, email, message } = req.body;
 
+  if (!name || !email || !message) {
+    return res.status(400).json({ error: "All fields are required" });
+  }
+
   try {
-    // Send email
-    await transporter.sendMail({
-      from: 'vijaytamada333@gmail.com', 
-      to: 'vijaytamada333@gmail.com', 
-      subject: `New Message from ${name}`,
-      text: `
-        Name: ${name}
-        Email: ${email}
-        Message: ${message}
-      `,
-      html: `
-        <h3>New Message from ${name}</h3>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message}</p>
-      `,
+    // Configure transporter (use Gmail SMTP + App Password)
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: "vijaytamada333@gmail.com",   // replace with your Gmail
+        pass: "izys xoux wofp lpqy"      // ⚠️ generate an App Password (not your Gmail password)
+      }
     });
 
-    res.status(200).json({ success: true });
+    // Define mail options
+    const mailOptions = {
+      from: `"${name}" <${email}>`,
+      to: "vijaytamada333@gmail.com",       // your receiving email
+      subject: `Portfolio Message from ${name}`,
+      text: `
+        New message from your portfolio website:
+
+        👤 Name: ${name}
+        📧 Email: ${email}
+        
+        📝 Message:
+        ${message}
+      `
+    };
+
+    // Send email
+    await transporter.sendMail(mailOptions);
+
+    res.status(200).json({ success: true, message: "Message sent successfully!" });
   } catch (error) {
-    console.error('Error sending email:', error);
-    res.status(500).json({ success: false, error: 'Failed to send message' });
+    console.error("❌ Error sending email:", error);
+    res.status(500).json({ error: "Failed to send message" });
   }
 });
 
-// Start the server
+// ------------------------------
+// Start Server
+// ------------------------------
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`🚀 Backend running on http://localhost:${PORT}`);
 });

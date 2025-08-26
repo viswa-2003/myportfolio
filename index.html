@@ -8,21 +8,78 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Navbar -->
   <nav class="navbar" id="navbar">
     <button class="nav-button active" data-section="home">Home</button>
     <button class="nav-button" data-section="skills">Skills</button>
     <button class="nav-button" data-section="projects">Projects</button>
+    <button class="nav-button" data-section="experience">Experience</button>
     <button class="nav-button" data-section="contact">Contact</button>
   </nav>
 
   <div class="container">
     <!-- Home Section -->
+     
     <section id="home" class="section active">
       <img src="vijayimg.jpg" alt="Profile" class="profile-image">
       <h1>Viswanadham Tamada</h1>
-      <p>Python Developer | Data Structures Enthusiast | Machine Learning Explorer</p>
+      <p class="tagline">Python Developer | Full-Stack Enthusiast | Machine Learning Explorer</p>
+      <p>B.Tech CSE (AI & ML) @ Aditya College of Engineering and Technology</p>
+
       <button id="resumeDownload" class="cta-button">Download Resume 📄</button>
-      <p>Check out my portfolio: <a href="https://viswa-2003.github.io/myportfolio/" target="_blank">Portfolio Link</a></p>
+      <p>Portfolio: <a href="https://viswa-2003.github.io/myportfolio/" target="_blank">Portfolio Link</a></p>
+
+      <!-- Stylish Summary -->
+      <div class="summary-box">
+        <h2>🚀 Summary</h2>
+        <p>
+          I am a passionate <strong>Computer Science & AI Student</strong> with expertise in 
+          <strong>Python, Full-Stack Development, and Machine Learning</strong>.  
+          Experienced in building scalable web apps, AI-driven solutions, and solving 300+ coding problems.
+        </p>
+      </div>
+
+      <!-- Quick Highlights -->
+      <div class="highlights">
+        <!-- Education -->
+        <div class="highlight-card">
+          <h3>🎓 Education</h3>
+          <p>B.Tech CSE (AI & ML), Aditya College</p>
+          <p><strong>CGPA:</strong> 7.98</p>
+          <a href="javascript:void(0)" class="see-more" onclick="openSection('skills')">See More →</a>
+        </div>
+
+        <!-- Skills -->
+        <div class="highlight-card">
+          <h3>🛠️ Skills</h3>
+          <p>Python, React.js, Node.js, MongoDB, DSA</p>
+          <a href="javascript:void(0)" class="see-more" onclick="openSection('skills')">See More →</a>
+        </div>
+
+        <!-- Projects -->
+        <div class="highlight-card">
+          <h3>💻 Projects</h3>
+          <p>Cargo Tracker, Face Emotion Recognition, CementPro, Rock-Paper-Scissors, Butterfly Classifier</p>
+          <a href="javascript:void(0)" class="see-more" onclick="openSection('projects')">See More →</a>
+        </div>
+
+        <!-- Experience -->
+        <div class="highlight-card">
+          <h3>💼 Experience</h3>
+          <p>AI & ML Intern @ SmartBridge (APSCHE Collaboration)</p>
+          <a href="javascript:void(0)" class="see-more" onclick="openSection('experience')">See More →</a>
+        </div>
+      </div>
+
+      <!-- Quick Contact -->
+      <div class="quick-contact">
+        <h2>📬 Quick Contact</h2>
+        <p>📧 vijaytamada333@gmail.com | 📱 +91 9703923063</p>
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/viswanadham-tamada-b46191260" class="social-link">LinkedIn</a>
+          <a href="https://github.com/viswa-2003" class="social-link">GitHub</a>
+        </div>
+      </div>
     </section>
 
     <!-- Skills Section -->
@@ -35,6 +92,12 @@
     <section id="projects" class="section">
       <h2>Projects</h2>
       <div id="projectsContainer"></div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+      <h2>Experience</h2>
+      <div id="experienceContainer"></div>
     </section>
 
     <!-- Contact Section -->
@@ -50,7 +113,7 @@
         <p>📧 vijaytamada333@gmail.com</p>
         <p>📱 +91 9703923063</p>
         <div class="social-links">
-          <a href="https://www.linkedin.com/in/viswanadham-tamada-b46191260?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BewgVMgesQHKVoBs9RHc7eQ%3D%3D" class="social-link">LinkedIn</a>
+          <a href="https://www.linkedin.com/in/viswanadham-tamada-b46191260" class="social-link">LinkedIn</a>
           <a href="https://github.com/viswa-2003" class="social-link">GitHub</a>
         </div>
       </div>
